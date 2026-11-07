@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#000000"/>
+  <rect x="32" y="32" width="1200" height="630" rx="0" fill="none"/>
+  <circle cx="148" cy="316" r="56" fill="#ffffff"/>
+  <text x="148" y="334" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#000000" text-anchor="middle">D</text>
+  <defs>
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#9b9b9b"/>
+    </linearGradient>
+  </defs>
+  <text x="260" y="250" font-family="Arial, sans-serif" font-size="88" font-weight="700" fill="url(#hg)">More customers</text>
+  <text x="260" y="368" font-family="Arial, sans-serif" font-size="88" font-weight="700" fill="url(#hg)">without a bigger team</text>
+  <text x="260" y="470" font-family="Arial, sans-serif" font-size="30" font-weight="500" fill="#9b9b9b">Design · Websites, SEO, marketing and AI automation</text>
+  <rect x="260" y="520" width="300" height="64" rx="32" fill="#ffffff"/>
+  <text x="410" y="561" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#000000" text-anchor="middle">design.studio</text>
+</svg>

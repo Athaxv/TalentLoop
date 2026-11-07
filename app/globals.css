@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist), Manrope, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-ink-950: var(--c-page);
+  --color-ink-900: var(--c-surface);
+  --color-ink-800: var(--c-card);
+  --color-ink-700: var(--c-elevated);
+  --color-ink-600: var(--c-elevated2);
+  --color-ink-accent: var(--c-accent);
+
+  --color-fg: var(--c-fg);
+  --color-btn: var(--c-btn-bg);
+  --color-btnfg: var(--c-btn-fg);
+  --color-line: var(--c-line);
+  --color-hover: var(--c-hover);
+  --color-glass: var(--c-glass);
+  --color-overlay: var(--c-overlay);
+  --color-ember: var(--c-ember);
+}
+
+/* ---------- Dark red-black theme (default) ---------- */
+:root {
+  --c-page: #0d0203;
+  --c-surface: #1c0508;
+  --c-card: #26070b;
+  --c-elevated: #330b10;
+  --c-elevated2: #421117;
+  --c-accent: #1e0609;
+
+  --c-fg: #ffefea;
+  --c-btn-bg: #ffede8;
+  --c-btn-fg: #1a0406;
+  --c-line: rgba(255, 160, 150, 0.14);
+  --c-hover: rgba(255, 150, 140, 0.1);
+  --c-glass: rgba(15, 3, 4, 0.6);
+  --c-overlay: rgba(10, 2, 3, 0.8);
+  --c-ember: #ff3b2e;
+
+  --hero-from: #ffefea;
+  --hero-to: #b07a72;
+  --tw-muted: rgba(255, 225, 215, 0.3);
+  --tw-lit: #ffefea;
+}
+
+/* ---------- Light theme ---------- */
+html.light {
+  --c-page: #ffffff;
+  --c-surface: #f6f6f7;
+  --c-card: #ffffff;
+  --c-elevated: #f0f1f3;
+  --c-elevated2: #e4e6ea;
+  --c-accent: #131209;
+
+  --c-fg: #141518;
+  --c-btn-bg: #141518;
+  --c-btn-fg: #ffffff;
+  --c-line: rgba(20, 21, 24, 0.1);
+  --c-hover: rgba(20, 21, 24, 0.06);
+  --c-glass: rgba(255, 255, 255, 0.72);
+  --c-overlay: rgba(255, 255, 255, 0.85);
+  --c-ember: #d9470f;
+
+  --hero-from: #000000;
+  --hero-to: #666666;
+  --tw-muted: rgba(20, 21, 24, 0.25);
+  --tw-lit: #141518;
+}
+
+body {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+.balance {
+  text-wrap: balance;
+}
+
+:root {
+  --fluid: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Scroll reveal, B7 */
+.reveal {
+  transform: translateY(64px);
+  filter: blur(12px);
+  opacity: 0;
+  transition: transform 0.8s var(--fluid), filter 0.8s var(--fluid),
+    opacity 0.8s var(--fluid);
+  will-change: transform, filter, opacity;
+}
+.reveal.is-in {
+  transform: translateY(0);
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* Hero heading gradient, B5 (theme aware) */
+.hero-gradient {
+  background: linear-gradient(90deg, var(--hero-from) 0%, var(--hero-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Tagline word reveal, B11 (theme aware) */
+.tw-word {
+  color: var(--tw-muted);
+  transition: color 0.7s var(--fluid);
+}
+.tw-word.is-lit {
+  color: var(--tw-lit);
+}
+
+/* Hamburger morph, B7 */
+.burger-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--c-btn-bg);
+  transition: transform 0.7s var(--fluid), top 0.7s var(--fluid),
+    opacity 0.4s var(--fluid);
+}
+
+::selection {
+  background: var(--c-elevated2);
+  color: var(--c-fg);
+}
+
+/* FAQ details marker */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Theme transition, one clean beat */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: background-color 0.7s var(--fluid),
+    border-color 0.7s var(--fluid), color 0.7s var(--fluid) !important;
+}
+
+/* ---------- Night freight figure (anatomy kit subset) ----------
+   The server-rendered SVG uses kit class names; tones are mapped onto the
+   site tokens so the one markup serves both themes. Part fills sit on the
+   ink-800 card: paper = card, faces one step lighter, shades darker. */
+.iso-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.iso-svg path,
+.iso-svg circle {
+  vector-effect: non-scaling-stroke;
+}
+.iso-svg {
+  --anatomy-weight: 0.6px;
+  --anatomy-mono: var(--font-mono);
+  --anatomy-paper: var(--c-card);
+  --anatomy-face: var(--c-elevated);
+  --anatomy-top: var(--c-elevated);
+  --anatomy-shade-0: #100204;
+  --anatomy-shade-1: #140305;
+  --anatomy-shade-2: #180406;
+  --anatomy-shade-3: var(--c-surface);
+  --anatomy-lit-top: var(--c-elevated2);
+  --anatomy-lit-shade: var(--c-surface);
+  --anatomy-hi: var(--c-fg);
+  --anatomy-mid: #9c756b;
+  --anatomy-lo: #55352e;
+  --anatomy-faint: #331f1b;
+  --anatomy-lit: var(--c-ember);
+  --anatomy-halo: #030102;
+  --anatomy-halo-opacity: 0.88;
+  --anatomy-dot: var(--c-page);
+  --anatomy-red: var(--c-ember);
+}
+html.light .iso-svg {
+  --anatomy-paper: var(--c-card);
+  --anatomy-face: var(--c-elevated2);
+  --anatomy-top: var(--c-elevated2);
+  --anatomy-shade-0: #e3e3e7;
+  --anatomy-shade-1: #e9e9ec;
+  --anatomy-shade-2: #efeef1;
+  --anatomy-shade-3: #f5f4f7;
+  --anatomy-lit-top: #ffffff;
+  --anatomy-lit-shade: #efeef1;
+  --anatomy-hi: var(--c-fg);
+  --anatomy-mid: #85868d;
+  --anatomy-lo: #b6b7bd;
+  --anatomy-faint: #d8d9de;
+  --anatomy-lit: var(--c-ember);
+  --anatomy-halo: #8a8a80;
+  --anatomy-halo-opacity: 0.32;
+  --anatomy-dot: var(--c-page);
+}
+.iso-fill {
+  fill: var(--anatomy-paper);
+  stroke: none;
+}
+.iso-solid[data-lit] > .iso-fill {
+  fill: var(--anatomy-face);
+}
+.iso-shade,
+.iso-top {
+  stroke: none;
+}
+.iso-shade[data-shade="0"] {
+  fill: var(--anatomy-shade-0);
+}
+.iso-shade[data-shade="1"] {
+  fill: var(--anatomy-shade-1);
+}
+.iso-shade[data-shade="2"] {
+  fill: var(--anatomy-shade-2);
+}
+.iso-shade[data-shade="3"] {
+  fill: var(--anatomy-shade-3);
+}
+.iso-top {
+  fill: var(--anatomy-top);
+}
+.iso-solid[data-lit] > .iso-top {
+  fill: var(--anatomy-lit-top);
+}
+.iso-solid[data-lit] > .iso-shade {
+  fill: var(--anatomy-lit-shade);
+}
+.iso-solid[data-seamless] > .iso-shade,
+.iso-solid[data-seamless] > .iso-top {
+  stroke-width: 0.4;
+  stroke-linejoin: round;
+}
+.iso-solid[data-seamless] > .iso-shade[data-shade="0"] {
+  stroke: var(--anatomy-shade-0);
+}
+.iso-solid[data-seamless] > .iso-shade[data-shade="1"] {
+  stroke: var(--anatomy-shade-1);
+}
+.iso-solid[data-seamless] > .iso-shade[data-shade="2"] {
+  stroke: var(--anatomy-shade-2);
+}
+.iso-solid[data-seamless] > .iso-shade[data-shade="3"] {
+  stroke: var(--anatomy-shade-3);
+}
+.iso-solid[data-seamless] > .iso-top {
+  stroke: var(--anatomy-top);
+}
+.iso-solid[data-seamless][data-lit] > .iso-top {
+  stroke: var(--anatomy-lit-top);
+}
+.iso-solid[data-seamless][data-lit] > .iso-shade {
+  stroke: var(--anatomy-lit-shade);
+}
+.iso-solid[data-lit] > .iso-edge {
+  stroke: var(--anatomy-lit);
+}
+.iso-halo {
+  fill: var(--anatomy-halo);
+  stroke: none;
+  filter: blur(9px);
+  opacity: var(--anatomy-halo-opacity);
+  transform: translateY(3px);
+}
+.iso-line {
+  fill: none;
+  stroke: var(--anatomy-lo);
+  stroke-width: var(--anatomy-weight);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.iso-line[data-tone="hi"] {
+  stroke: var(--anatomy-hi);
+}
+.iso-line[data-tone="mid"] {
+  stroke: var(--anatomy-mid);
+}
+.iso-line[data-tone="lo"] {
+  stroke: var(--anatomy-lo);
+}
+.iso-line[data-tone="faint"] {
+  stroke: var(--anatomy-faint);
+}
+.iso-line[data-tone="lit"] {
+  stroke: var(--anatomy-lit);
+}
+.iso-wire-end {
+  fill: var(--anatomy-paper);
+  stroke: var(--anatomy-lo);
+  stroke-width: var(--anatomy-weight);
+}
+.iso-wire[data-tone="hi"] .iso-wire-end {
+  stroke: var(--anatomy-hi);
+}
+.iso-wire[data-tone="mid"] .iso-wire-end {
+  stroke: var(--anatomy-mid);
+}
+.iso-wire[data-tone="faint"] .iso-wire-end {
+  stroke: var(--anatomy-faint);
+}
+.iso-wire[data-tone="lit"] .iso-wire-end {
+  stroke: var(--anatomy-lit);
+}
+.iso-dots circle {
+  fill: var(--anatomy-hi);
+  stroke: none;
+  opacity: 0.32;
+}
+.iso-dots[data-tone="hi"] circle {
+  opacity: 0.85;
+}
+.iso-dots[data-tone="mid"] circle {
+  opacity: 0.45;
+}
+.iso-dots[data-tone="lo"] circle {
+  opacity: 0.22;
+}
+.iso-dots[data-tone="faint"] circle {
+  opacity: 0.12;
+}
+.iso-dot {
+  fill: var(--anatomy-dot);
+  opacity: 0.85;
+}
+.iso-face-text {
+  fill: var(--anatomy-mid);
+  font-family: var(--anatomy-mono);
+  letter-spacing: 0.04em;
+}
+.iso-face-text[data-tone="hi"] {
+  fill: var(--anatomy-hi);
+}
+.iso-face-text[data-tone="lo"] {
+  fill: var(--anatomy-lo);
+}
+.iso-face-text[data-tone="faint"] {
+  fill: var(--anatomy-faint);
+}
